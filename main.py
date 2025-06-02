@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, validator, Field
 from typing import List
 
 app = FastAPI()
@@ -19,8 +19,14 @@ GRADE_MAP = {
 class Course(BaseModel):
     course_code: str
     course_name: str
-    credits: int
+    credits: int = Field(..., gt=0)  # 0 이하 거부
     grade: str
+
+    @validator("grade")
+    def validate_grade(cls, g):
+        if g.upper() not in GRADE_MAP:
+            raise ValueError(f"Invalid grade: {g}")
+        return g.upper()
 
 class Student(BaseModel):
     student_id: str
