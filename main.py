@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import List
 
 app = FastAPI()
 
@@ -27,6 +27,10 @@ class Student(BaseModel):
     name: str
     courses: List[Course]
 
+@app.get("/")
+def root():
+    return {"message": "FastAPI is running"}
+
 @app.post("/summary")
 def calculate_summary(student: Student):
     total_credits = 0
@@ -39,7 +43,7 @@ def calculate_summary(student: Student):
 
     gpa = round(total_points / total_credits, 2) if total_credits > 0 else 0.0
 
-    result = {
+    return {
         "student_summary": {
             "student_id": student.student_id,
             "name": student.name,
@@ -47,4 +51,4 @@ def calculate_summary(student: Student):
             "total_credits": total_credits
         }
     }
-    return result
+
