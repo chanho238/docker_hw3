@@ -1,0 +1,24 @@
+ {
+ "student_id": "2019204201",
+ "name": "김철수",
+ "courses": [
+ {
+ "course_code": "I040-2-4141",
+ "course_name": "정보디자인프로그래밍실습",
+ "credits": 3,
+ "grade": "A+"
+ },
+ {
+ "course_code": "I040-2-1243",
+ "course_name": "자료구조",
+ "credits": 3,
+ "grade": "B+"
+ },
+ {
+ "course_code": "I040-3-7740",
+ "course_name": "HCI및UX평가",
+ "credits": 2,
+ "grade": "A+"
+ }
+ ]
+ }
