@@ -6,13 +6,13 @@ app = FastAPI()
 
 GRADE_MAP = {
     "A+": 4.5,
-    "A": 4.0,
+    "A0": 4.0,
     "B+": 3.5,
-    "B": 3.0,
+    "B0": 3.0,
     "C+": 2.5,
-    "C": 2.0,
+    "C0": 2.0,
     "D+": 1.5,
-    "D": 1.0,
+    "D0": 1.0,
     "F": 0.0
 }
 
@@ -28,7 +28,7 @@ class Student(BaseModel):
     courses: List[Course]
 
 @app.post("/summary")
-def calculate(student: Student):
+def calculate_summary(student: Student):
     total_credits = 0
     total_points = 0.0
 
